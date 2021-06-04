@@ -1,0 +1,41 @@
+{
+    "config": {
+      "wide_screen_mode": true
+    },
+    "i18n_elements": {
+      "zh_cn": [
+        {
+          "tag": "div",
+          "text": {
+            "tag": "lark_md",
+            "content": "[飞书](https://www.feishu.cn)整合即时沟通、日历、音视频会议、云文档、云盘、工作台等功能于一体，成就组织和个人，更高效、更愉悦。"
+          }
+        },
+        {
+          "tag": "action",
+          "actions": [
+            {
+              "tag": "button",
+              "text": {
+                "tag": "plain_text",
+                "content": "确认"
+              },
+              "value": {
+                "pwd": "123456"
+              },
+              "type": "primary"
+            },
+            {
+              "tag": "button",
+              "text": {
+                "tag": "plain_text",
+                "content": "跳转到百度"
+              },
+              "url": "https://www.baidu.com",
+              "type": "default"
+            }
+          ]
+        }
+      ]
+    }
+  }
