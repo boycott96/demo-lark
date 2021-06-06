@@ -193,6 +193,7 @@ export default {
                 this.confirmLoading = false;
                 this.$message.success("部门新增成功");
               } else {
+                this.confirmLoading = false;
                 this.$message.error(data.message);
               }
             });
@@ -205,6 +206,7 @@ export default {
                 this.confirmLoading = false;
                 this.$message.success("部门更新成功");
               } else {
+                this.confirmLoading = false;
                 this.$message.error(data.message);
               }
             });

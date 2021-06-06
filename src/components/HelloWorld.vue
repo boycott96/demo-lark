@@ -237,6 +237,7 @@ export default {
                 this.confirmLoading = false;
                 this.$message.success("用户新增成功");
               } else {
+                this.confirmLoading = false;
                 this.$message.error(data.message);
               }
             });
@@ -249,6 +250,7 @@ export default {
                 this.confirmLoading = false;
                 this.$message.success("用户更新成功");
               } else {
+                this.confirmLoading = false;
                 this.$message.error(data.message);
               }
             });

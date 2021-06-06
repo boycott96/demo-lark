@@ -12,6 +12,7 @@ export default {
   name: "Msg",
   data() {
     return {
+      open_id: 'ou_24b3c9fec359d227f05caa487ec08692',
       form: {
         app_id: "cli_a0262feb4ffad00e",
         app_secret: "RgQ8WdjVPQBOJHKY7lh3hcm5ViijTdr4",
@@ -27,20 +28,27 @@ export default {
   },
   methods: {
     initWebSocket() {
-      const url = "ws://localhost:8082/websocket";
+      const url = "ws://localhost:8082/websocket/" + this.open_id;
       this.websock = new WebSocket(url);
       this.websock.onmessage = this.websocketOnMessage;
       this.websock.onopen = this.websocketOnOpen;
       this.websock.onError = this.websocketOnError;
       this.websock.onClose = this.websocketOnClose;
     },
-    websocketOnMessage() {
-      let actions = {"test": "12345"};
-      this.websocketsend(JSON.stringify(actions));
+    websocketOnMessage(message) {
+      this.$message.success(message.data);
+      // let actions = {"test": "12345"};
+      // this.websocketsend(JSON.stringify(actions));
     },
-    websocketOnOpen() {},
-    websocketOnError() {},
-    websocketOnClose() {},
+    websocketOnOpen() {
+      console.log("websocket已打开");
+    },
+    websocketOnError() {
+      console.log("websocket异常");
+    },
+    websocketOnClose() {
+      console.log("websocket关闭");
+    },
     sendMsg () {
       getAccessToken(this.form).then((res) => {
         // 得到apptoken
@@ -53,7 +61,7 @@ export default {
             Authorization: "Bearer " + app_access_token,
           };
           let params = {
-            open_id: "ou_24b3c9fec359d227f05caa487ec08692", // 机器人聊天的id
+            open_id: this.open_id, // 机器人聊天的id
             msg_type: "interactive",
             card: cardJson,
           };
